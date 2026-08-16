@@ -1,0 +1,20 @@
+{
+  "trace_id": "exec_m2_unknown_as_rejected",
+  "original_events": 1,
+  "reduced_events": 1,
+  "replay_count": 2,
+  "original_schedule_events": 1,
+  "reduced_schedule_events": 1,
+  "execution_trace_events": 2,
+  "candidate_replay_count": 2,
+  "deletion_checks": [
+    {
+      "removed_event_id": "opaque-timeout",
+      "candidate_events": 0,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": true
+    }
+  ],
+  "one_minimal": true
+}

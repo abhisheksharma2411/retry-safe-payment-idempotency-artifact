@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_local_expiry",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_local_expiry",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_local_expiry"
+  },
+  "workers": 1,
+  "generated_states": 15030,
+  "distinct_states": 10286,
+  "search_depth": 7,
+  "wall_time_seconds": 1.003,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "25d4e9696f9a18d79087de6db5582de2e543b08dca7322b1766fdc581d98986e"
+}

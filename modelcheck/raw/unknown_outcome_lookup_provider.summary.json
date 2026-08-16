@@ -1,0 +1,27 @@
+{
+  "run_id": "unknown_outcome_lookup_provider",
+  "model_variant": "payment_idempotency",
+  "configuration": "unknown_outcome_lookup_provider",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "unknown_outcome_lookup_provider"
+  },
+  "workers": 1,
+  "generated_states": 3471653,
+  "distinct_states": 3064766,
+  "search_depth": 11,
+  "wall_time_seconds": 52.412,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "432f0dc5976e427ef6e4ba26d38264b6810472c9434d0d4e3cfbe5bbe7cac2b4"
+}

@@ -1,0 +1,34 @@
+{
+  "trace_id": "exec_m10_parent_amount_dedup",
+  "original_events": 3,
+  "reduced_events": 3,
+  "replay_count": 7,
+  "original_schedule_events": 3,
+  "reduced_schedule_events": 3,
+  "execution_trace_events": 7,
+  "candidate_replay_count": 7,
+  "deletion_checks": [
+    {
+      "removed_event_id": "capture-parent",
+      "candidate_events": 2,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": false
+    },
+    {
+      "removed_event_id": "refund-a",
+      "candidate_events": 2,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": false
+    },
+    {
+      "removed_event_id": "refund-b",
+      "candidate_events": 2,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": false
+    }
+  ],
+  "one_minimal": true
+}

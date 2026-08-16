@@ -1,0 +1,27 @@
+{
+  "run_id": "partial_capture_and_refund",
+  "model_variant": "payment_idempotency",
+  "configuration": "partial_capture_and_refund",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "partial_capture_and_refund"
+  },
+  "workers": 1,
+  "generated_states": 2261,
+  "distinct_states": 2076,
+  "search_depth": 7,
+  "wall_time_seconds": 0.746,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "e62151d396cacf1a5b7d9fd691c2eb58f3c7635c1dbb0e06641acaa0aaf50838"
+}

@@ -1,0 +1,205 @@
+{
+  "run_id": "cooperative-go-reserve-replay-safe_pair_08_exec_m4_raw_key_only_scope",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "safe_pair_08_exec_m4_raw_key_only_scope",
+  "mutant_id": "safe",
+  "profile": {
+    "name": "idempotent-replay",
+    "deduplication": true,
+    "authoritative_lookup": false,
+    "provider_retention_steps": 12,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "safe_pair_08_exec_m4_raw_key_only_scope",
+      "event_id": "tenant-a",
+      "action": "Claim",
+      "identity": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "safe_pair_08_exec_m4_raw_key_only_scope",
+      "event_id": "tenant-a",
+      "action": "ProviderAction",
+      "identity": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    },
+    {
+      "index": 2,
+      "schedule_id": "safe_pair_08_exec_m4_raw_key_only_scope",
+      "event_id": "tenant-b",
+      "action": "Claim",
+      "identity": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 3,
+      "schedule_id": "safe_pair_08_exec_m4_raw_key_only_scope",
+      "event_id": "tenant-b",
+      "action": "ProviderAction",
+      "identity": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "safe_pair_08_exec_m4_raw_key_only_scope_tenant-a",
+      "identity": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-a|capture|auth-m4-a|shared-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-a|capture|auth-m4-a|shared-key|0"
+      }
+    },
+    {
+      "request_id": "safe_pair_08_exec_m4_raw_key_only_scope_tenant-b",
+      "identity": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-b|capture|auth-m4-b|shared-key|0-2",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-b|capture|auth-m4-b|shared-key|0"
+      }
+    }
+  ],
+  "records": {
+    "merchant-a|capture|auth-m4-a|shared-key|0": {
+      "identity": {
+        "tenant": "merchant-a",
+        "operation_type": "capture",
+        "parent_resource": "auth-m4-a",
+        "caller_key": "shared-key",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "provider_ref": "prov-merchant-a|capture|auth-m4-a|shared-key|0-1",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-a|capture|auth-m4-a|shared-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-a|capture|auth-m4-a|shared-key|0"
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    },
+    "merchant-b|capture|auth-m4-b|shared-key|0": {
+      "identity": {
+        "tenant": "merchant-b",
+        "operation_type": "capture",
+        "parent_resource": "auth-m4-b",
+        "caller_key": "shared-key",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-b",
+      "fence": 1,
+      "provider_key": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "provider_ref": "prov-merchant-b|capture|auth-m4-b|shared-key|0-2",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-b|capture|auth-m4-b|shared-key|0-2",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-b|capture|auth-m4-b|shared-key|0"
+      },
+      "lease_until_step": 3,
+      "expires_at_step": 14,
+      "tombstone_until": 22
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "provider_key": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "provider_ref": "prov-merchant-a|capture|auth-m4-a|shared-key|0-1",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    },
+    {
+      "step": 2,
+      "identity": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "provider_key": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "provider_ref": "prov-merchant-b|capture|auth-m4-b|shared-key|0-2",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {
+      "auth-m4-a": 100,
+      "auth-m4-b": 100
+    },
+    "refunded_by_parent": {},
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": true,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": true
+      },
+      {
+        "name": "P2",
+        "passed": true
+      },
+      {
+        "name": "P3",
+        "passed": true
+      },
+      {
+        "name": "P4",
+        "passed": true
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": true
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "df6f372bed14f794202544285c47891d86a084673b80df1245db1b0abaa22437"
+  }
+}

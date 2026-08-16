@@ -1,0 +1,6 @@
+name: asynchronous-settlement
+scope: tenant_operation_parent_key_epoch
+deduplication: true
+authoritative_lookup: true
+async_settlement: true
+provider_retention_steps: 12

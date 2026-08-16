@@ -1,0 +1,170 @@
+{
+  "run_id": "cooperative-go-reserve-replay-exec_m6_late_payload_check",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "exec_m6_late_payload_check",
+  "mutant_id": "exec_m6",
+  "profile": {
+    "name": "idempotent-replay",
+    "deduplication": true,
+    "authoritative_lookup": false,
+    "provider_retention_steps": 12,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "exec_m6_late_payload_check",
+      "event_id": "capture-original",
+      "action": "Claim",
+      "identity": "merchant-1|capture|auth-m6|m6-key|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "exec_m6_late_payload_check",
+      "event_id": "capture-original",
+      "action": "ProviderAction",
+      "identity": "merchant-1|capture|auth-m6|m6-key|0",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    },
+    {
+      "index": 2,
+      "schedule_id": "exec_m6_late_payload_check",
+      "event_id": "capture-changed",
+      "action": "ReplayTerminal",
+      "identity": "merchant-1|capture|auth-m6|m6-key|0",
+      "details": {
+        "state": "COMPLETED"
+      }
+    },
+    {
+      "index": 3,
+      "schedule_id": "exec_m6_late_payload_check",
+      "event_id": "capture-changed",
+      "action": "LatePayloadConflict",
+      "identity": "merchant-1|capture|auth-m6|m6-key|0"
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "capture-original",
+      "identity": "merchant-1|capture|auth-m6|m6-key|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m6|m6-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|auth-m6|m6-key|0"
+      }
+    },
+    {
+      "request_id": "capture-changed",
+      "identity": "merchant-1|capture|auth-m6|m6-key|0",
+      "status": "replay",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m6|m6-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|auth-m6|m6-key|0",
+        "replay_of_state": "COMPLETED"
+      }
+    }
+  ],
+  "records": {
+    "merchant-1|capture|auth-m6|m6-key|0": {
+      "identity": {
+        "tenant": "merchant-1",
+        "operation_type": "capture",
+        "parent_resource": "auth-m6",
+        "caller_key": "m6-key",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "merchant-1|capture|auth-m6|m6-key|0",
+      "provider_ref": "prov-merchant-1|capture|auth-m6|m6-key|0-1",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m6|m6-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|auth-m6|m6-key|0"
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-1|capture|auth-m6|m6-key|0",
+      "provider_key": "merchant-1|capture|auth-m6|m6-key|0",
+      "provider_ref": "prov-merchant-1|capture|auth-m6|m6-key|0-1",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {
+      "auth-m6": 100
+    },
+    "refunded_by_parent": {},
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": false,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": true
+      },
+      {
+        "name": "P2",
+        "passed": true
+      },
+      {
+        "name": "P3",
+        "passed": true
+      },
+      {
+        "name": "P4",
+        "passed": false,
+        "violations": [
+          "merchant-1|capture|auth-m6|m6-key|0 checked payload after replay"
+        ]
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": true
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "6bb2237f69d025dfa6c6fa17b09e0db4947f075788d9ac5820363893378345d7"
+  }
+}

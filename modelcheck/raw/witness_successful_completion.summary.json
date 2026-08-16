@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_successful_completion",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_successful_completion",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_successful_completion"
+  },
+  "workers": 1,
+  "generated_states": 177,
+  "distinct_states": 160,
+  "search_depth": 6,
+  "wall_time_seconds": 0.766,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "d0570cdd8b71637f68a431ed50878f072e567ae9dd23008a26a59330d251e031"
+}

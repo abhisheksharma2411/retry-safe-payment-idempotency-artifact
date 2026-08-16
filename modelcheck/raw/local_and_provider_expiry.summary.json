@@ -1,0 +1,27 @@
+{
+  "run_id": "local_and_provider_expiry",
+  "model_variant": "payment_idempotency",
+  "configuration": "local_and_provider_expiry",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "local_and_provider_expiry"
+  },
+  "workers": 1,
+  "generated_states": 64855,
+  "distinct_states": 42951,
+  "search_depth": 7,
+  "wall_time_seconds": 1.656,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "0e5dca9b26ec5cd98c5a0d3aa36913a6c4ec9bf234a99ef83a5ecb16e32240f9"
+}

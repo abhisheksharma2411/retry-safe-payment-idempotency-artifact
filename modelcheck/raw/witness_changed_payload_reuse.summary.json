@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_changed_payload_reuse",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_changed_payload_reuse",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_changed_payload_reuse"
+  },
+  "workers": 1,
+  "generated_states": 876,
+  "distinct_states": 796,
+  "search_depth": 7,
+  "wall_time_seconds": 0.933,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "270470ea5141f263635804f6b0f9f6a4f59303ead5a20f4aab4125159e51d1c7"
+}

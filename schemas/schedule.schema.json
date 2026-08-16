@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/t8/schedule.schema.json",
+  "title": "Schedule",
+  "type": "object",
+  "required": ["schedule_id", "profile", "events"],
+  "properties": {
+    "schedule_id": {"type": "string"},
+    "profile": {"type": "string"},
+    "mutant_id": {"type": "string"},
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "kind"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"enum": ["request", "advance_time", "crash", "restart"]},
+          "actor": {"type": "string"},
+          "behavior": {
+            "enum": [
+              "commit_reply",
+              "commit_drop_reply",
+              "timeout_before_commit",
+              "timeout_after_commit",
+              "reject_final",
+              "duplicate_ack",
+              "delayed_settlement"
+            ]
+          },
+          "advance_by": {"type": "integer", "minimum": 0},
+          "request": {"type": "object"}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

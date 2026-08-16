@@ -1,0 +1,27 @@
+{
+  "run_id": "reversal_parent_state",
+  "model_variant": "payment_idempotency",
+  "configuration": "reversal_parent_state",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "reversal_parent_state"
+  },
+  "workers": 1,
+  "generated_states": 1189,
+  "distinct_states": 1089,
+  "search_depth": 7,
+  "wall_time_seconds": 0.703,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "35a453cd9f133c2fdb1739e9505494bf5783e3544a8f41df045b1db40dffd876"
+}

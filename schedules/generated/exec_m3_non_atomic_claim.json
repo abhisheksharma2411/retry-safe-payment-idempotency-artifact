@@ -1,0 +1,31 @@
+{
+  "schedule_id": "exec_m3_non_atomic_claim",
+  "profile": "idempotent-replay",
+  "mutant_id": "exec_m3",
+  "events": [
+    {
+      "id": "attempt-a",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "attempt-a",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m3", "caller_key": "m3-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    },
+    {
+      "id": "attempt-b",
+      "kind": "request",
+      "actor": "svc-b",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "attempt-b",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m3", "caller_key": "m3-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    }
+  ]
+}

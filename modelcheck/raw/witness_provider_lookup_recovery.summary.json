@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_provider_lookup_recovery",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_provider_lookup_recovery",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_provider_lookup_recovery"
+  },
+  "workers": 1,
+  "generated_states": 894560,
+  "distinct_states": 784404,
+  "search_depth": 11,
+  "wall_time_seconds": 9.891,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "1ac093273e18f9e6161aa562776470480a02af321cc9a74018530b8a35fc0955"
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_final_rejection",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_final_rejection",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_final_rejection"
+  },
+  "workers": 1,
+  "generated_states": 178,
+  "distinct_states": 161,
+  "search_depth": 6,
+  "wall_time_seconds": 0.691,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "d5a72f6a6d5dc49cd223829dea810647073a4828bc6f492cc6dc2acae1bb9e0f"
+}

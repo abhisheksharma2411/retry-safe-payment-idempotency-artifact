@@ -1,0 +1,27 @@
+{
+  "trace_id": "exec_m9_short_retention",
+  "original_events": 2,
+  "reduced_events": 2,
+  "replay_count": 5,
+  "original_schedule_events": 2,
+  "reduced_schedule_events": 2,
+  "execution_trace_events": 3,
+  "candidate_replay_count": 5,
+  "deletion_checks": [
+    {
+      "removed_event_id": "capture-retained",
+      "candidate_events": 1,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": true
+    },
+    {
+      "removed_event_id": "advance-within-promised-window",
+      "candidate_events": 1,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": true
+    }
+  ],
+  "one_minimal": true
+}

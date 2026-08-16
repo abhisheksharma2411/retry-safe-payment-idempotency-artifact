@@ -1,0 +1,56 @@
+mutants:
+  - id: exec_m1
+    dimension: provider effect before durable claim
+    expected_properties: [P1, P6]
+    configuration: capture_minimal
+    executable_schedule: schedules/generated/exec_m1_effect_before_claim.json
+  - id: exec_m2
+    dimension: unknown outcome stored as final rejection
+    expected_properties: [P6]
+    configuration: unknown_outcome_opaque_provider
+    executable_schedule: schedules/generated/exec_m2_unknown_as_rejected.json
+  - id: exec_m3
+    dimension: non-atomic read then write claim
+    expected_properties: [P1]
+    configuration: concurrent_same_identity
+    executable_schedule: schedules/generated/exec_m3_non_atomic_claim.json
+  - id: exec_m4
+    dimension: raw key used without full scope
+    expected_properties: [P2]
+    configuration: cross_scope_same_raw_key
+    executable_schedule: schedules/generated/exec_m4_raw_key_only_scope.json
+  - id: exec_m5
+    dimension: losing claim racer still calls provider
+    expected_properties: [P1]
+    configuration: concurrent_same_identity
+    executable_schedule: schedules/generated/exec_m5_loser_calls_provider.json
+  - id: exec_m6
+    dimension: payload mismatch checked after terminal replay
+    expected_properties: [P4]
+    configuration: changed_payload_all_states
+    executable_schedule: schedules/generated/exec_m6_late_payload_check.json
+  - id: exec_m7
+    dimension: terminal replay calls the provider again
+    expected_properties: [P5]
+    configuration: changed_payload_all_states
+    executable_schedule: schedules/generated/exec_m7_terminal_reexec.json
+  - id: exec_m8
+    dimension: no repair when operation and business records disagree
+    expected_properties: [P6]
+    configuration: projection_repair
+    executable_schedule: schedules/generated/exec_m8_no_projection_repair.json
+  - id: exec_m9
+    dimension: local or provider retention shorter than promised
+    expected_properties: [P6]
+    configuration: local_and_provider_expiry
+    executable_schedule: schedules/generated/exec_m9_short_retention.json
+  - id: exec_m10
+    dimension: partial operations deduplicated by parent and amount
+    expected_properties: [P3, P7]
+    configuration: partial_capture_and_refund
+    executable_schedule: schedules/generated/exec_m10_parent_amount_dedup.json
+  - id: exec_m11
+    dimension: provider adapter changes provider key between attempts
+    expected_properties: [P1]
+    configuration: unknown_outcome_replay_provider
+    executable_schedule: schedules/generated/exec_m11_provider_key_drift.json

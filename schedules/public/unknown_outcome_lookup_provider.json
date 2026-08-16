@@ -1,0 +1,28 @@
+{
+  "schedule_id": "unknown_outcome_lookup_provider",
+  "profile": "authoritative-lookup",
+  "mutant_id": "safe",
+  "events": [
+    {
+      "id": "capture-timeout",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_drop_reply",
+      "request": {
+        "request_id": "capture-timeout",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "auth-lookup",
+          "caller_key": "lookup-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    }
+  ]
+}

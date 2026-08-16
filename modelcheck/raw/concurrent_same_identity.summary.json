@@ -1,0 +1,27 @@
+{
+  "run_id": "concurrent_same_identity",
+  "model_variant": "payment_idempotency",
+  "configuration": "concurrent_same_identity",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "concurrent_same_identity"
+  },
+  "workers": 1,
+  "generated_states": 618990,
+  "distinct_states": 583305,
+  "search_depth": 11,
+  "wall_time_seconds": 12.042,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "4d7e7104fe02bb2e3652844e88633c655e229d06efba503cc2b2cca4b94be1ab"
+}

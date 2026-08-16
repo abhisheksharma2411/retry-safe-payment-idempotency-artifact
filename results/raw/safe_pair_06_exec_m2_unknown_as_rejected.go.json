@@ -1,0 +1,129 @@
+{
+  "run_id": "cooperative-go-reserve-replay-safe_pair_06_exec_m2_unknown_as_rejected",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "safe_pair_06_exec_m2_unknown_as_rejected",
+  "mutant_id": "safe",
+  "profile": {
+    "name": "opaque-provider",
+    "deduplication": false,
+    "authoritative_lookup": false,
+    "provider_retention_steps": 0,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "safe_pair_06_exec_m2_unknown_as_rejected",
+      "event_id": "opaque-timeout",
+      "action": "Claim",
+      "identity": "merchant-1|capture|auth-m2|m2-key|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "safe_pair_06_exec_m2_unknown_as_rejected",
+      "event_id": "opaque-timeout",
+      "action": "ProviderAction",
+      "identity": "merchant-1|capture|auth-m2|m2-key|0",
+      "details": {
+        "provider_action": "unknown_after_commit"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "safe_pair_06_exec_m2_unknown_as_rejected_opaque-timeout",
+      "identity": "merchant-1|capture|auth-m2|m2-key|0",
+      "status": "unknown",
+      "conflict": false,
+      "pending": false,
+      "unknown": true,
+      "outcome": {
+        "status": "unknown",
+        "amount": 0,
+        "currency": "",
+        "operation_id": "merchant-1|capture|auth-m2|m2-key|0"
+      }
+    }
+  ],
+  "records": {
+    "merchant-1|capture|auth-m2|m2-key|0": {
+      "identity": {
+        "tenant": "merchant-1",
+        "operation_type": "capture",
+        "parent_resource": "auth-m2",
+        "caller_key": "m2-key",
+        "epoch": 0
+      },
+      "state": "UNKNOWN",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "merchant-1|capture|auth-m2|m2-key|0",
+      "outcome": {
+        "status": "",
+        "amount": 0,
+        "currency": "",
+        "operation_id": ""
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-1|capture|auth-m2|m2-key|0",
+      "provider_key": "merchant-1|capture|auth-m2|m2-key|0",
+      "provider_ref": "prov-merchant-1|capture|auth-m2|m2-key|0-1",
+      "behavior": "commit_drop_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": false
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {},
+    "refunded_by_parent": {},
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": true,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": true
+      },
+      {
+        "name": "P2",
+        "passed": true
+      },
+      {
+        "name": "P3",
+        "passed": true
+      },
+      {
+        "name": "P4",
+        "passed": true
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": true
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "df6f372bed14f794202544285c47891d86a084673b80df1245db1b0abaa22437"
+  }
+}

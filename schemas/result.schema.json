@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/t8/result.schema.json",
+  "title": "Run result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "mode",
+    "implementation",
+    "schedule_id",
+    "profile",
+    "trace",
+    "responses",
+    "records",
+    "provider_ledger",
+    "projection",
+    "observer"
+  ],
+  "properties": {
+    "run_id": {"type": "string"},
+    "mode": {"enum": ["cooperative", "portable"]},
+    "implementation": {"type": "string"},
+    "schedule_id": {"type": "string"},
+    "mutant_id": {"type": "string"},
+    "profile": {"type": "object"},
+    "trace": {"$ref": "trace.schema.json"},
+    "responses": {"type": "array"},
+    "records": {"type": "object"},
+    "provider_ledger": {"type": "array"},
+    "projection": {"type": "object"},
+    "observer": {"type": "object"}
+  },
+  "additionalProperties": true
+}

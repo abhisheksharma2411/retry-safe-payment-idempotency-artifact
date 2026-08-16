@@ -1,0 +1,27 @@
+{
+  "run_id": "capture_minimal",
+  "model_variant": "payment_idempotency",
+  "configuration": "capture_minimal",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "capture_minimal"
+  },
+  "workers": 1,
+  "generated_states": 1189,
+  "distinct_states": 1089,
+  "search_depth": 7,
+  "wall_time_seconds": 0.854,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "855a0a8ee58658af191f7d7e67d70b0d15b2823e17029ce43f656978438fbeba"
+}

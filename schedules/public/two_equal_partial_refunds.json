@@ -1,0 +1,70 @@
+{
+  "schedule_id": "two_equal_partial_refunds",
+  "profile": "idempotent-replay",
+  "mutant_id": "safe",
+  "events": [
+    {
+      "id": "cap",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "cap",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "pay-1",
+          "caller_key": "cap-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    },
+    {
+      "id": "refund-a",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "refund-a",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "refund",
+          "parent_resource": "pay-1",
+          "caller_key": "refund-a",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 50,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    },
+    {
+      "id": "refund-b",
+      "kind": "request",
+      "actor": "svc-b",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "refund-b",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "refund",
+          "parent_resource": "pay-1",
+          "caller_key": "refund-b",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 50,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    }
+  ]
+}

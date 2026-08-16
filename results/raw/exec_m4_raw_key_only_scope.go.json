@@ -1,0 +1,187 @@
+{
+  "run_id": "cooperative-go-reserve-replay-exec_m4_raw_key_only_scope",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "exec_m4_raw_key_only_scope",
+  "mutant_id": "exec_m4",
+  "profile": {
+    "name": "idempotent-replay",
+    "deduplication": true,
+    "authoritative_lookup": false,
+    "provider_retention_steps": 12,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "exec_m4_raw_key_only_scope",
+      "event_id": "tenant-a",
+      "action": "RawKeyOnlyScope",
+      "identity": "shared-key",
+      "details": {
+        "semantic_identity": "merchant-a|capture|auth-m4-a|shared-key|0"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "exec_m4_raw_key_only_scope",
+      "event_id": "tenant-a",
+      "action": "Claim",
+      "identity": "shared-key",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 2,
+      "schedule_id": "exec_m4_raw_key_only_scope",
+      "event_id": "tenant-a",
+      "action": "ProviderAction",
+      "identity": "shared-key",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    },
+    {
+      "index": 3,
+      "schedule_id": "exec_m4_raw_key_only_scope",
+      "event_id": "tenant-b",
+      "action": "RawKeyOnlyScope",
+      "identity": "shared-key",
+      "details": {
+        "semantic_identity": "merchant-b|capture|auth-m4-b|shared-key|0"
+      }
+    },
+    {
+      "index": 4,
+      "schedule_id": "exec_m4_raw_key_only_scope",
+      "event_id": "tenant-b",
+      "action": "ReplayTerminal",
+      "identity": "shared-key",
+      "details": {
+        "state": "COMPLETED"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "tenant-a",
+      "identity": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-shared-key-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-a|capture|auth-m4-a|shared-key|0"
+      }
+    },
+    {
+      "request_id": "tenant-b",
+      "identity": "merchant-b|capture|auth-m4-b|shared-key|0",
+      "status": "replay",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-shared-key-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-a|capture|auth-m4-a|shared-key|0",
+        "replay_of_state": "COMPLETED"
+      }
+    }
+  ],
+  "records": {
+    "shared-key": {
+      "identity": {
+        "tenant": "merchant-a",
+        "operation_type": "capture",
+        "parent_resource": "auth-m4-a",
+        "caller_key": "shared-key",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "shared-key",
+      "provider_ref": "prov-shared-key-1",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-shared-key-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-a|capture|auth-m4-a|shared-key|0"
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-a|capture|auth-m4-a|shared-key|0",
+      "provider_key": "shared-key",
+      "provider_ref": "prov-shared-key-1",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {
+      "auth-m4-a": 100
+    },
+    "refunded_by_parent": {},
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": false,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": true
+      },
+      {
+        "name": "P2",
+        "passed": false,
+        "violations": [
+          "shared-key used raw caller key without full semantic scope",
+          "shared-key used raw caller key without full semantic scope"
+        ]
+      },
+      {
+        "name": "P3",
+        "passed": true
+      },
+      {
+        "name": "P4",
+        "passed": true
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": false,
+        "violations": [
+          "shared-key completed without provider evidence"
+        ]
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "f79abd69841a97bacdf30f1bbe0bda14621962c439848ad9339bea06ab6d8ca1"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "formal_m8",
+  "model_variant": "payment_idempotency",
+  "configuration": "formal_m8",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "formal_m8"
+  },
+  "workers": 1,
+  "generated_states": 849,
+  "distinct_states": 735,
+  "search_depth": 6,
+  "wall_time_seconds": 0.71,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "48966cc8dd4cc2eeba5cb6825a90e050eeb5e1ca50e3f906fb0d8d79625184a6"
+}

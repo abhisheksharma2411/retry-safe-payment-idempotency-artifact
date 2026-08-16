@@ -1,0 +1,259 @@
+{
+  "run_id": "cooperative-go-reserve-replay-exec_m10_parent_amount_dedup",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "exec_m10_parent_amount_dedup",
+  "mutant_id": "exec_m10",
+  "profile": {
+    "name": "idempotent-replay",
+    "deduplication": true,
+    "authoritative_lookup": false,
+    "provider_retention_steps": 12,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "capture-parent",
+      "action": "Claim",
+      "identity": "merchant-1|capture|pay-m10|cap-m10|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "capture-parent",
+      "action": "ProviderAction",
+      "identity": "merchant-1|capture|pay-m10|cap-m10|0",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    },
+    {
+      "index": 2,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "refund-a",
+      "action": "ParentAmountDedup",
+      "identity": "pay-m10|refund|50",
+      "details": {
+        "semantic_identity": "merchant-1|refund|pay-m10|refund-a|0"
+      }
+    },
+    {
+      "index": 3,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "refund-a",
+      "action": "Claim",
+      "identity": "pay-m10|refund|50",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 4,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "refund-a",
+      "action": "ProviderAction",
+      "identity": "pay-m10|refund|50",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    },
+    {
+      "index": 5,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "refund-b",
+      "action": "ParentAmountDedup",
+      "identity": "pay-m10|refund|50",
+      "details": {
+        "semantic_identity": "merchant-1|refund|pay-m10|refund-b|0"
+      }
+    },
+    {
+      "index": 6,
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "event_id": "refund-b",
+      "action": "ReplayTerminal",
+      "identity": "pay-m10|refund|50",
+      "details": {
+        "state": "COMPLETED"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "capture-parent",
+      "identity": "merchant-1|capture|pay-m10|cap-m10|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|pay-m10|cap-m10|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|pay-m10|cap-m10|0"
+      }
+    },
+    {
+      "request_id": "refund-a",
+      "identity": "merchant-1|refund|pay-m10|refund-a|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-pay-m10|refund|50-2",
+        "amount": 50,
+        "currency": "USD",
+        "operation_id": "merchant-1|refund|pay-m10|refund-a|0"
+      }
+    },
+    {
+      "request_id": "refund-b",
+      "identity": "merchant-1|refund|pay-m10|refund-b|0",
+      "status": "replay",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-pay-m10|refund|50-2",
+        "amount": 50,
+        "currency": "USD",
+        "operation_id": "merchant-1|refund|pay-m10|refund-a|0",
+        "replay_of_state": "COMPLETED"
+      }
+    }
+  ],
+  "records": {
+    "merchant-1|capture|pay-m10|cap-m10|0": {
+      "identity": {
+        "tenant": "merchant-1",
+        "operation_type": "capture",
+        "parent_resource": "pay-m10",
+        "caller_key": "cap-m10",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "merchant-1|capture|pay-m10|cap-m10|0",
+      "provider_ref": "prov-merchant-1|capture|pay-m10|cap-m10|0-1",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|pay-m10|cap-m10|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|pay-m10|cap-m10|0"
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    },
+    "pay-m10|refund|50": {
+      "identity": {
+        "tenant": "merchant-1",
+        "operation_type": "refund",
+        "parent_resource": "pay-m10",
+        "caller_key": "refund-a",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "78dcd27eb4fbc92f4feb6b9fee8ccfcd99c84db7c2a3310d7ac9531622d8692f",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "pay-m10|refund|50",
+      "provider_ref": "prov-pay-m10|refund|50-2",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-pay-m10|refund|50-2",
+        "amount": 50,
+        "currency": "USD",
+        "operation_id": "merchant-1|refund|pay-m10|refund-a|0"
+      },
+      "lease_until_step": 3,
+      "expires_at_step": 14,
+      "tombstone_until": 22
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-1|capture|pay-m10|cap-m10|0",
+      "provider_key": "merchant-1|capture|pay-m10|cap-m10|0",
+      "provider_ref": "prov-merchant-1|capture|pay-m10|cap-m10|0-1",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    },
+    {
+      "step": 2,
+      "identity": "merchant-1|refund|pay-m10|refund-a|0",
+      "provider_key": "pay-m10|refund|50",
+      "provider_ref": "prov-pay-m10|refund|50-2",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {
+      "pay-m10": 100
+    },
+    "refunded_by_parent": {
+      "pay-m10": 50
+    },
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": false,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": true
+      },
+      {
+        "name": "P2",
+        "passed": true
+      },
+      {
+        "name": "P3",
+        "passed": false,
+        "violations": [
+          "pay-m10|refund|50 deduplicated partial operation by parent and amount",
+          "pay-m10|refund|50 deduplicated partial operation by parent and amount"
+        ]
+      },
+      {
+        "name": "P4",
+        "passed": true
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": false,
+        "violations": [
+          "pay-m10|refund|50 completed without provider evidence"
+        ]
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "eaee780ad3f5a8f4cbc74f1d0461304ba3a1c175e96ee6eba1e9ad96832008de"
+  }
+}

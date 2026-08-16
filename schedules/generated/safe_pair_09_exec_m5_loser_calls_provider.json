@@ -1,0 +1,49 @@
+{
+  "schedule_id": "safe_pair_09_exec_m5_loser_calls_provider",
+  "profile": "idempotent-replay",
+  "mutant_id": "safe",
+  "events": [
+    {
+      "id": "attempt-a",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "safe_pair_09_exec_m5_loser_calls_provider_attempt-a",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "auth-race",
+          "caller_key": "same-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    },
+    {
+      "id": "attempt-b",
+      "kind": "request",
+      "actor": "svc-b",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "safe_pair_09_exec_m5_loser_calls_provider_attempt-b",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "auth-race",
+          "caller_key": "same-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    }
+  ]
+}

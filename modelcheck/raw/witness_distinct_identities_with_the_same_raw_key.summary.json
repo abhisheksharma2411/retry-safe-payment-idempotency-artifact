@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_distinct_identities_with_the_same_raw_key",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_distinct_identities_with_the_same_raw_key",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_distinct_identities_with_the_same_raw_key"
+  },
+  "workers": 1,
+  "generated_states": 12,
+  "distinct_states": 10,
+  "search_depth": 3,
+  "wall_time_seconds": 0.703,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "9bc187469baed677899df824a68161092808c66421d6ffac5135863ee2e8a79a"
+}

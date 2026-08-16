@@ -1,0 +1,27 @@
+{
+  "run_id": "formal_m6",
+  "model_variant": "payment_idempotency",
+  "configuration": "formal_m6",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "formal_m6"
+  },
+  "workers": 1,
+  "generated_states": 900,
+  "distinct_states": 796,
+  "search_depth": 7,
+  "wall_time_seconds": 0.743,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "e8cdd69628bff0e73589bf9bf37f388772d0c2a417f2095b325e39c10edfe98b"
+}

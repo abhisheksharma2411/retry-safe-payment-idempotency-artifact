@@ -1,0 +1,27 @@
+{
+  "run_id": "projection_repair",
+  "model_variant": "payment_idempotency",
+  "configuration": "projection_repair",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "projection_repair"
+  },
+  "workers": 1,
+  "generated_states": 14336,
+  "distinct_states": 12389,
+  "search_depth": 7,
+  "wall_time_seconds": 0.971,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "0d60e2d8484f20dc3af8e21d4bb38afb1f327d61fe9d86c096af06f89c5d2be0"
+}

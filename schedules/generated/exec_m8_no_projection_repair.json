@@ -1,0 +1,19 @@
+{
+  "schedule_id": "exec_m8_no_projection_repair",
+  "profile": "authoritative-lookup",
+  "mutant_id": "exec_m8",
+  "events": [
+    {
+      "id": "capture-no-projection",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "capture-no-projection",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m8", "caller_key": "m8-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    }
+  ]
+}

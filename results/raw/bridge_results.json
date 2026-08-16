@@ -1,0 +1,413 @@
+{
+  "mapped_cases": 11,
+  "reproduced_cases": 11,
+  "matching_classifications": 11,
+  "cases": [
+    {
+      "formal_trace_id": "formal_m1",
+      "schedule_id": "exec_m1_effect_before_claim",
+      "mutant_id": "exec_m1",
+      "formal_result": "violated",
+      "formal_primary_property": "P1",
+      "formal_action_sequence": [
+        "Submit",
+        "EffectBeforeClaim"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m1_effect_before_claim.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P1",
+      "concrete_observed_sequence": [
+        "ProviderCalledBeforeClaim",
+        "Claim",
+        "ProviderAction"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m1|m1-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m1|m1-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m2",
+      "schedule_id": "exec_m2_unknown_as_rejected",
+      "mutant_id": "exec_m2",
+      "formal_result": "violated",
+      "formal_primary_property": "P6",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommitAndDropAck",
+        "MarkUnknown"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m2_unknown_as_rejected.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P6",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m2|m2-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m2|m2-key|0": "REJECTED_FINAL"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m3",
+      "schedule_id": "exec_m3_non_atomic_claim",
+      "mutant_id": "exec_m3",
+      "formal_result": "violated",
+      "formal_primary_property": "P1",
+      "formal_action_sequence": [
+        "Submit",
+        "Submit",
+        "ReadRecord",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m3_non_atomic_claim.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P1",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ReplayTerminal",
+        "NonAtomicDoubleClaim"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m3|m3-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m3|m3-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m4",
+      "schedule_id": "exec_m4_raw_key_only_scope",
+      "mutant_id": "exec_m4",
+      "formal_result": "violated",
+      "formal_primary_property": "P2",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit",
+        "RawKeyAliasReplay"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m4_raw_key_only_scope.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P2",
+      "concrete_observed_sequence": [
+        "RawKeyOnlyScope",
+        "Claim",
+        "ProviderAction",
+        "RawKeyOnlyScope",
+        "ReplayTerminal"
+      ],
+      "effect_counts": {
+        "merchant-a|capture|auth-m4-a|shared-key|0": 1
+      },
+      "terminal_states": {
+        "shared-key": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m5",
+      "schedule_id": "exec_m5_loser_calls_provider",
+      "mutant_id": "exec_m5",
+      "formal_result": "violated",
+      "formal_primary_property": "P1",
+      "formal_action_sequence": [
+        "Submit",
+        "Submit",
+        "ReadRecord",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "LosingClaimantProviderCall",
+        "ProviderReject"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m5_loser_calls_provider.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P1",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ReplayTerminal",
+        "LoserCalledProvider"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-race|same-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-race|same-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m6",
+      "schedule_id": "exec_m6_late_payload_check",
+      "mutant_id": "exec_m6",
+      "formal_result": "violated",
+      "formal_primary_property": "P4",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit",
+        "ReplayTerminal"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m6_late_payload_check.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P4",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ReplayTerminal",
+        "LatePayloadConflict"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m6|m6-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m6|m6-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m7",
+      "schedule_id": "exec_m7_terminal_reexec",
+      "mutant_id": "exec_m7",
+      "formal_result": "violated",
+      "formal_primary_property": "P5",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit",
+        "ReplayTerminal"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m7_terminal_reexec.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P5",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ReplayTerminal",
+        "TerminalReplayReexecuted"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m7|m7-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m7|m7-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m8",
+      "schedule_id": "exec_m8_no_projection_repair",
+      "mutant_id": "exec_m8",
+      "formal_result": "violated",
+      "formal_primary_property": "P6",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m8_no_projection_repair.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P6",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m8|m8-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m8|m8-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m9",
+      "schedule_id": "exec_m9_short_retention",
+      "mutant_id": "exec_m9",
+      "formal_result": "violated",
+      "formal_primary_property": "P6",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit",
+        "ExpireLocalRecord"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m9_short_retention.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P6",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ShortRetentionExpired"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m9|m9-key|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m9|m9-key|0": "TOMBSTONE"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m10",
+      "schedule_id": "exec_m10_parent_amount_dedup",
+      "mutant_id": "exec_m10",
+      "formal_result": "violated",
+      "formal_primary_property": "P3",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommit",
+        "ParentAmountDedupAlias"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m10_parent_amount_dedup.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P3",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ParentAmountDedup",
+        "Claim",
+        "ProviderAction",
+        "ParentAmountDedup",
+        "ReplayTerminal"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|pay-m10|cap-m10|0": 1,
+        "merchant-1|refund|pay-m10|refund-a|0": 1
+      },
+      "terminal_states": {
+        "merchant-1|capture|pay-m10|cap-m10|0": "COMPLETED",
+        "pay-m10|refund|50": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    },
+    {
+      "formal_trace_id": "formal_m11",
+      "schedule_id": "exec_m11_provider_key_drift",
+      "mutant_id": "exec_m11",
+      "formal_result": "violated",
+      "formal_primary_property": "P1",
+      "formal_action_sequence": [
+        "Submit",
+        "ReadRecord",
+        "Claim",
+        "SendProviderRequest",
+        "ProviderCommitAndDropAck",
+        "ProviderKeyDriftRecovery"
+      ],
+      "generated_executable_schedule": "schedules/generated/exec_m11_provider_key_drift.json",
+      "executable_result": "violated",
+      "executable_primary_property": "P1",
+      "concrete_observed_sequence": [
+        "Claim",
+        "ProviderAction",
+        "ProviderKeyDrift"
+      ],
+      "effect_counts": {
+        "merchant-1|capture|auth-m11|m11-key|0": 2
+      },
+      "terminal_states": {
+        "merchant-1|capture|auth-m11|m11-key|0": "COMPLETED"
+      },
+      "reproduced": true,
+      "classification_agreement": true,
+      "identity_agreement": true,
+      "effect_count_agreement": true,
+      "terminal_state_agreement": true,
+      "causal_order_agreement": true,
+      "primary_property_agreement": true
+    }
+  ]
+}

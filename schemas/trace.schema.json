@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/t8/trace.schema.json",
+  "title": "Trace",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["index", "schedule_id", "event_id", "action"],
+    "properties": {
+      "index": {"type": "integer", "minimum": 0},
+      "schedule_id": {"type": "string"},
+      "event_id": {"type": "string"},
+      "action": {"type": "string"},
+      "identity": {"type": "string"},
+      "details": {"type": "object", "additionalProperties": {"type": "string"}}
+    },
+    "additionalProperties": false
+  }
+}

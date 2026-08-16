@@ -1,0 +1,6 @@
+name: opaque-provider
+scope: tenant_operation_parent_key_epoch
+deduplication: false
+authoritative_lookup: false
+async_settlement: false
+provider_retention_steps: 0

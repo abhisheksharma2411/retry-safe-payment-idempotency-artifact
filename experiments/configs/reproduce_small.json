@@ -1,0 +1,10 @@
+{
+  "public_schedules": [
+    "schedules/public/changed_payload_all_states.json",
+    "schedules/public/unknown_outcome_lookup_provider.json",
+    "schedules/public/two_equal_partial_refunds.json"
+  ],
+  "mutant_schedules": [
+    "schedules/generated/exec_m5_loser_calls_provider.json"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_business_projection_mismatch",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_business_projection_mismatch",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_business_projection_mismatch"
+  },
+  "workers": 1,
+  "generated_states": 849,
+  "distinct_states": 735,
+  "search_depth": 6,
+  "wall_time_seconds": 0.915,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "d2da099a0325b30cd5cc6f84943cd565375c2420f38ab62caeb86978d796a996"
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "cross_scope_same_raw_key",
+  "model_variant": "payment_idempotency",
+  "configuration": "cross_scope_same_raw_key",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "cross_scope_same_raw_key"
+  },
+  "workers": 1,
+  "generated_states": 63043,
+  "distinct_states": 52650,
+  "search_depth": 8,
+  "wall_time_seconds": 1.65,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "2a2f3e02e97e07acaf1bd9cf23ce3d92535d44974abb6df2618df6521bbc3fe7"
+}

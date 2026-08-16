@@ -1,0 +1,28 @@
+{
+  "schedule_id": "safe_pair_06_exec_m2_unknown_as_rejected",
+  "profile": "opaque-provider",
+  "mutant_id": "safe",
+  "events": [
+    {
+      "id": "opaque-timeout",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_drop_reply",
+      "request": {
+        "request_id": "safe_pair_06_exec_m2_unknown_as_rejected_opaque-timeout",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "auth-m2",
+          "caller_key": "m2-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    }
+  ]
+}

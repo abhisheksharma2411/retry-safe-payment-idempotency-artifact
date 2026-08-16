@@ -1,0 +1,28 @@
+{
+  "schedule_id": "exec_m1_effect_before_claim",
+  "profile": "idempotent-replay",
+  "mutant_id": "exec_m1",
+  "events": [
+    {
+      "id": "capture-before-claim",
+      "kind": "request",
+      "actor": "svc-a",
+      "request": {
+        "request_id": "capture-before-claim",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "auth-m1",
+          "caller_key": "m1-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      },
+      "behavior": "commit_reply"
+    }
+  ]
+}

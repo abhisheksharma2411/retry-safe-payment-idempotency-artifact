@@ -1,0 +1,27 @@
+{
+  "trace_id": "exec_m4_raw_key_only_scope",
+  "original_events": 2,
+  "reduced_events": 2,
+  "replay_count": 5,
+  "original_schedule_events": 2,
+  "reduced_schedule_events": 2,
+  "execution_trace_events": 5,
+  "candidate_replay_count": 5,
+  "deletion_checks": [
+    {
+      "removed_event_id": "tenant-a",
+      "candidate_events": 1,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": false
+    },
+    {
+      "removed_event_id": "tenant-b",
+      "candidate_events": 1,
+      "replayed": true,
+      "same_failure_fingerprint": false,
+      "observer_passed": false
+    }
+  ],
+  "one_minimal": true
+}

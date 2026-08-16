@@ -1,0 +1,28 @@
+{
+  "schedule_id": "safe_pair_11_exec_m11_provider_key_drift",
+  "profile": "idempotent-replay",
+  "mutant_id": "safe",
+  "events": [
+    {
+      "id": "capture-timeout-replay",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_drop_reply",
+      "request": {
+        "request_id": "safe_pair_11_exec_m11_provider_key_drift_capture-timeout-replay",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "auth-m11",
+          "caller_key": "m11-key",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      }
+    }
+  ]
+}

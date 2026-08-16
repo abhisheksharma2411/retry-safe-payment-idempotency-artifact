@@ -1,0 +1,27 @@
+{
+  "run_id": "liveness_fair",
+  "model_variant": "payment_idempotency",
+  "configuration": "liveness_fair",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "liveness_fair"
+  },
+  "workers": 1,
+  "generated_states": 63,
+  "distinct_states": 63,
+  "search_depth": 6,
+  "wall_time_seconds": 0.786,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "0cec58e5ec2bf0e7c0659aaec65e9ff9b30c5cb8276bcdd6c3433218420b6baa"
+}

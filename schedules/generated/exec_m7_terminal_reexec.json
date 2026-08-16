@@ -1,0 +1,31 @@
+{
+  "schedule_id": "exec_m7_terminal_reexec",
+  "profile": "idempotent-replay",
+  "mutant_id": "exec_m7",
+  "events": [
+    {
+      "id": "capture-original",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "capture-original",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m7", "caller_key": "m7-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    },
+    {
+      "id": "capture-retry",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "capture-retry",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m7", "caller_key": "m7-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    }
+  ]
+}

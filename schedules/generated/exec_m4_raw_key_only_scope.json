@@ -1,0 +1,31 @@
+{
+  "schedule_id": "exec_m4_raw_key_only_scope",
+  "profile": "idempotent-replay",
+  "mutant_id": "exec_m4",
+  "events": [
+    {
+      "id": "tenant-a",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "tenant-a",
+        "identity": {"tenant": "merchant-a", "operation_type": "capture", "parent_resource": "auth-m4-a", "caller_key": "shared-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    },
+    {
+      "id": "tenant-b",
+      "kind": "request",
+      "actor": "svc-b",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "tenant-b",
+        "identity": {"tenant": "merchant-b", "operation_type": "capture", "parent_resource": "auth-m4-b", "caller_key": "shared-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    }
+  ]
+}

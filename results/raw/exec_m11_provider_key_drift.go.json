@@ -1,0 +1,161 @@
+{
+  "run_id": "cooperative-go-reserve-replay-exec_m11_provider_key_drift",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "exec_m11_provider_key_drift",
+  "mutant_id": "exec_m11",
+  "profile": {
+    "name": "idempotent-replay",
+    "deduplication": true,
+    "authoritative_lookup": false,
+    "provider_retention_steps": 12,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "exec_m11_provider_key_drift",
+      "event_id": "capture-timeout-replay",
+      "action": "Claim",
+      "identity": "merchant-1|capture|auth-m11|m11-key|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "exec_m11_provider_key_drift",
+      "event_id": "capture-timeout-replay",
+      "action": "ProviderAction",
+      "identity": "merchant-1|capture|auth-m11|m11-key|0",
+      "details": {
+        "provider_action": "unknown_after_commit"
+      }
+    },
+    {
+      "index": 2,
+      "schedule_id": "exec_m11_provider_key_drift",
+      "event_id": "capture-timeout-replay",
+      "action": "ProviderKeyDrift",
+      "identity": "merchant-1|capture|auth-m11|m11-key|0",
+      "details": {
+        "initial_provider_key": "merchant-1|capture|auth-m11|m11-key|0-1",
+        "recovery_provider_key": "merchant-1|capture|auth-m11|m11-key|0-1-recovery"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "capture-timeout-replay",
+      "identity": "merchant-1|capture|auth-m11|m11-key|0",
+      "status": "completed_after_replay",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m11|m11-key|0-1-recovery-2",
+        "amount": 0,
+        "currency": "",
+        "operation_id": "merchant-1|capture|auth-m11|m11-key|0"
+      }
+    }
+  ],
+  "records": {
+    "merchant-1|capture|auth-m11|m11-key|0": {
+      "identity": {
+        "tenant": "merchant-1",
+        "operation_type": "capture",
+        "parent_resource": "auth-m11",
+        "caller_key": "m11-key",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "merchant-1|capture|auth-m11|m11-key|0-1",
+      "provider_ref": "prov-merchant-1|capture|auth-m11|m11-key|0-1-recovery-2",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m11|m11-key|0-1-recovery-2",
+        "amount": 0,
+        "currency": "",
+        "operation_id": "merchant-1|capture|auth-m11|m11-key|0"
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-1|capture|auth-m11|m11-key|0",
+      "provider_key": "merchant-1|capture|auth-m11|m11-key|0-1",
+      "provider_ref": "prov-merchant-1|capture|auth-m11|m11-key|0-1-1",
+      "behavior": "commit_drop_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": false
+    },
+    {
+      "step": 2,
+      "identity": "merchant-1|capture|auth-m11|m11-key|0",
+      "provider_key": "merchant-1|capture|auth-m11|m11-key|0-1-recovery",
+      "provider_ref": "prov-merchant-1|capture|auth-m11|m11-key|0-1-recovery-2",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {
+      "auth-m11": 100
+    },
+    "refunded_by_parent": {},
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": false,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": false,
+        "violations": [
+          "merchant-1|capture|auth-m11|m11-key|0 has 2 committed effects"
+        ]
+      },
+      {
+        "name": "P2",
+        "passed": true
+      },
+      {
+        "name": "P3",
+        "passed": false,
+        "violations": [
+          "merchant-1|capture|auth-m11|m11-key|0 completed with 2 committed effects"
+        ]
+      },
+      {
+        "name": "P4",
+        "passed": true
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": true
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "847b1bbac6e57fd55a3868d759b07fea5ab0301eef45afa5e9b208dcff973ca7"
+  }
+}

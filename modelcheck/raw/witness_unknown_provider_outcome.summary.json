@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_unknown_provider_outcome",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_unknown_provider_outcome",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_unknown_provider_outcome"
+  },
+  "workers": 1,
+  "generated_states": 478,
+  "distinct_states": 433,
+  "search_depth": 7,
+  "wall_time_seconds": 0.9,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "db4f66c61680b3a38d2d1cff5a5a8ab0ee15cb6a4595c7bb9c1e8ace73e747ed"
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_provider_replay_recovery",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_provider_replay_recovery",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_provider_replay_recovery"
+  },
+  "workers": 1,
+  "generated_states": 849,
+  "distinct_states": 735,
+  "search_depth": 6,
+  "wall_time_seconds": 0.879,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "c1521331925376327eaf1d68f9804f2f5de4fd27134591719a34f127728f54c8"
+}

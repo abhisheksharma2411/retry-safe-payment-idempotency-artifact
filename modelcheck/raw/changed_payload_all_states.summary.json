@@ -1,0 +1,27 @@
+{
+  "run_id": "changed_payload_all_states",
+  "model_variant": "payment_idempotency",
+  "configuration": "changed_payload_all_states",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "changed_payload_all_states"
+  },
+  "workers": 1,
+  "generated_states": 2283,
+  "distinct_states": 2098,
+  "search_depth": 7,
+  "wall_time_seconds": 0.735,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "c349a52a8dbdd3eb018e82ef86353c5926d8f57844fc6fbb14714851856f2446"
+}

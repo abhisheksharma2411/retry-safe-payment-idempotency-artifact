@@ -1,0 +1,31 @@
+{
+  "schedule_id": "exec_m6_late_payload_check",
+  "profile": "idempotent-replay",
+  "mutant_id": "exec_m6",
+  "events": [
+    {
+      "id": "capture-original",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "capture-original",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m6", "caller_key": "m6-key", "epoch": 0},
+        "payload": {"amount": 100, "currency": "USD"},
+        "require_effect": true
+      }
+    },
+    {
+      "id": "capture-changed",
+      "kind": "request",
+      "actor": "svc-a",
+      "behavior": "commit_reply",
+      "request": {
+        "request_id": "capture-changed",
+        "identity": {"tenant": "merchant-1", "operation_type": "capture", "parent_resource": "auth-m6", "caller_key": "m6-key", "epoch": 0},
+        "payload": {"amount": 101, "currency": "USD"},
+        "require_effect": true
+      }
+    }
+  ]
+}

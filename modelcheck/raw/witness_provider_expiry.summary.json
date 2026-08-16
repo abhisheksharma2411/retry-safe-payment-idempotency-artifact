@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_provider_expiry",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_provider_expiry",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_provider_expiry"
+  },
+  "workers": 1,
+  "generated_states": 3,
+  "distinct_states": 3,
+  "search_depth": 2,
+  "wall_time_seconds": 0.699,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "bfcaf6227abee1467083c61c70a30bd8f0549181b079d20880aed9158d494382"
+}

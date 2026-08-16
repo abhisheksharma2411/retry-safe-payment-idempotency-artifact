@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_concurrent_same_identity_retry",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_concurrent_same_identity_retry",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_concurrent_same_identity_retry"
+  },
+  "workers": 1,
+  "generated_states": 8,
+  "distinct_states": 7,
+  "search_depth": 3,
+  "wall_time_seconds": 0.642,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "73c4a49d0b26827da88a6909eb13374c998636e89987b1ca4fce5340665f4cbd"
+}

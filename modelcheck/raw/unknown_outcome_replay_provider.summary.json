@@ -1,0 +1,27 @@
+{
+  "run_id": "unknown_outcome_replay_provider",
+  "model_variant": "payment_idempotency",
+  "configuration": "unknown_outcome_replay_provider",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "unknown_outcome_replay_provider"
+  },
+  "workers": 1,
+  "generated_states": 3471633,
+  "distinct_states": 3064746,
+  "search_depth": 11,
+  "wall_time_seconds": 50.671,
+  "peak_memory_mb": 0,
+  "result": "holds_within_bound",
+  "counterexample_path": null,
+  "raw_log_sha256": "749c17cfbc3c53036981875eea41a0685c92fe843b6cafb94266b75303e421ad"
+}

@@ -1,0 +1,1 @@
+Concrete trace events emitted by the schedule runner use stable action names such as `Claim`, `ProviderAction`, `ReplayTerminal`, `Takeover`, `Crash`, and `ExpireToTombstone`. The bridge pipeline maps those action names to the TLA+ trace export action labels.

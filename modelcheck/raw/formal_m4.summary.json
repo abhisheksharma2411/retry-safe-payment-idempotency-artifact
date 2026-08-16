@@ -1,0 +1,27 @@
+{
+  "run_id": "formal_m4",
+  "model_variant": "payment_idempotency",
+  "configuration": "formal_m4",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "formal_m4"
+  },
+  "workers": 1,
+  "generated_states": 5875,
+  "distinct_states": 4574,
+  "search_depth": 7,
+  "wall_time_seconds": 0.844,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "f5300873d8ec01a1bcccd488f1b6496c6d80fb29522460138a630fd5217a33b4"
+}

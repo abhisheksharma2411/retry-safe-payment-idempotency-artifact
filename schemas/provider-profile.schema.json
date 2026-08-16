@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/t8/provider-profile.schema.json",
+  "title": "Provider profile",
+  "type": "object",
+  "required": [
+    "name",
+    "scope",
+    "deduplication",
+    "authoritative_lookup",
+    "async_settlement",
+    "provider_retention_steps"
+  ],
+  "properties": {
+    "name": {"type": "string"},
+    "scope": {"type": "string"},
+    "deduplication": {"type": "boolean"},
+    "authoritative_lookup": {"type": "boolean"},
+    "async_settlement": {"type": "boolean"},
+    "provider_retention_steps": {"type": "integer", "minimum": 0}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,70 @@
+{
+  "schedule_id": "exec_m10_parent_amount_dedup",
+  "profile": "idempotent-replay",
+  "mutant_id": "exec_m10",
+  "events": [
+    {
+      "id": "capture-parent",
+      "kind": "request",
+      "actor": "svc-a",
+      "request": {
+        "request_id": "capture-parent",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "capture",
+          "parent_resource": "pay-m10",
+          "caller_key": "cap-m10",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 100,
+          "currency": "USD"
+        },
+        "require_effect": true
+      },
+      "behavior": "commit_reply"
+    },
+    {
+      "id": "refund-a",
+      "kind": "request",
+      "actor": "svc-a",
+      "request": {
+        "request_id": "refund-a",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "refund",
+          "parent_resource": "pay-m10",
+          "caller_key": "refund-a",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 50,
+          "currency": "USD"
+        },
+        "require_effect": true
+      },
+      "behavior": "commit_reply"
+    },
+    {
+      "id": "refund-b",
+      "kind": "request",
+      "actor": "svc-b",
+      "request": {
+        "request_id": "refund-b",
+        "identity": {
+          "tenant": "merchant-1",
+          "operation_type": "refund",
+          "parent_resource": "pay-m10",
+          "caller_key": "refund-b",
+          "epoch": 0
+        },
+        "payload": {
+          "amount": 50,
+          "currency": "USD"
+        },
+        "require_effect": true
+      },
+      "behavior": "commit_reply"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "opaque_impossibility_witness",
+  "model_variant": "payment_idempotency",
+  "configuration": "opaque_impossibility_witness",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "opaque_impossibility_witness"
+  },
+  "workers": 1,
+  "generated_states": 481,
+  "distinct_states": 436,
+  "search_depth": 7,
+  "wall_time_seconds": 0.828,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "dd5a79d2b4af3cda233858a012c85e285af57f22e0ed92a87f3b26b4367a6656"
+}

@@ -1,0 +1,27 @@
+{
+  "run_id": "witness_two_legitimate_equal_partial_refunds",
+  "model_variant": "payment_idempotency",
+  "configuration": "witness_two_legitimate_equal_partial_refunds",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "witness_two_legitimate_equal_partial_refunds"
+  },
+  "workers": 1,
+  "generated_states": 780528,
+  "distinct_states": 671592,
+  "search_depth": 11,
+  "wall_time_seconds": 10.48,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "83179cf17f0c58176ad079aaaebeaf571b65ab90f8284a79f2078358c62624c3"
+}

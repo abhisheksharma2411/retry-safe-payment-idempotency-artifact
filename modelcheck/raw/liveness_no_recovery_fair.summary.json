@@ -1,0 +1,27 @@
+{
+  "run_id": "liveness_no_recovery_fair",
+  "model_variant": "payment_idempotency",
+  "configuration": "liveness_no_recovery_fair",
+  "properties": [
+    "TypeOK",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "constants": {
+    "config": "liveness_no_recovery_fair"
+  },
+  "workers": 1,
+  "generated_states": 63,
+  "distinct_states": 63,
+  "search_depth": 6,
+  "wall_time_seconds": 0.719,
+  "peak_memory_mb": 0,
+  "result": "violated",
+  "counterexample_path": null,
+  "raw_log_sha256": "2c6639dc267fc48efba98346a5db0ca394e07d11532f8dfd184ebc2e266bd106"
+}

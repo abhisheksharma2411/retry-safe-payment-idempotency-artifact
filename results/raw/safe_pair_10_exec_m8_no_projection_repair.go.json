@@ -1,0 +1,134 @@
+{
+  "run_id": "cooperative-go-reserve-replay-safe_pair_10_exec_m8_no_projection_repair",
+  "mode": "cooperative",
+  "implementation": "go-reserve-replay",
+  "schedule_id": "safe_pair_10_exec_m8_no_projection_repair",
+  "mutant_id": "safe",
+  "profile": {
+    "name": "authoritative-lookup",
+    "deduplication": false,
+    "authoritative_lookup": true,
+    "provider_retention_steps": 12,
+    "async_settlement": false,
+    "scope": "tenant_operation_parent_key_epoch"
+  },
+  "trace": [
+    {
+      "index": 0,
+      "schedule_id": "safe_pair_10_exec_m8_no_projection_repair",
+      "event_id": "capture-no-projection",
+      "action": "Claim",
+      "identity": "merchant-1|capture|auth-m8|m8-key|0",
+      "details": {
+        "claimed": "true"
+      }
+    },
+    {
+      "index": 1,
+      "schedule_id": "safe_pair_10_exec_m8_no_projection_repair",
+      "event_id": "capture-no-projection",
+      "action": "ProviderAction",
+      "identity": "merchant-1|capture|auth-m8|m8-key|0",
+      "details": {
+        "provider_action": "commit_reply"
+      }
+    }
+  ],
+  "responses": [
+    {
+      "request_id": "safe_pair_10_exec_m8_no_projection_repair_capture-no-projection",
+      "identity": "merchant-1|capture|auth-m8|m8-key|0",
+      "status": "completed",
+      "conflict": false,
+      "pending": false,
+      "unknown": false,
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m8|m8-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|auth-m8|m8-key|0"
+      }
+    }
+  ],
+  "records": {
+    "merchant-1|capture|auth-m8|m8-key|0": {
+      "identity": {
+        "tenant": "merchant-1",
+        "operation_type": "capture",
+        "parent_resource": "auth-m8",
+        "caller_key": "m8-key",
+        "epoch": 0
+      },
+      "state": "COMPLETED",
+      "fingerprint": "f8c872e8bd3896556d1dd31f0339804bdc09cbcf89e017a79faeaac6496b8e70",
+      "owner": "svc-a",
+      "fence": 1,
+      "provider_key": "merchant-1|capture|auth-m8|m8-key|0",
+      "provider_ref": "prov-merchant-1|capture|auth-m8|m8-key|0-1",
+      "outcome": {
+        "status": "completed",
+        "provider_ref": "prov-merchant-1|capture|auth-m8|m8-key|0-1",
+        "amount": 100,
+        "currency": "USD",
+        "operation_id": "merchant-1|capture|auth-m8|m8-key|0"
+      },
+      "lease_until_step": 2,
+      "expires_at_step": 13,
+      "tombstone_until": 21
+    }
+  },
+  "provider_ledger": [
+    {
+      "step": 1,
+      "identity": "merchant-1|capture|auth-m8|m8-key|0",
+      "provider_key": "merchant-1|capture|auth-m8|m8-key|0",
+      "provider_ref": "prov-merchant-1|capture|auth-m8|m8-key|0-1",
+      "behavior": "commit_reply",
+      "committed": true,
+      "final_reject": false,
+      "settled": true
+    }
+  ],
+  "projection": {
+    "captured_by_parent": {
+      "auth-m8": 100
+    },
+    "refunded_by_parent": {},
+    "reversals_by_parent": {}
+  },
+  "observer": {
+    "passed": true,
+    "properties": [
+      {
+        "name": "P1",
+        "passed": true
+      },
+      {
+        "name": "P2",
+        "passed": true
+      },
+      {
+        "name": "P3",
+        "passed": true
+      },
+      {
+        "name": "P4",
+        "passed": true
+      },
+      {
+        "name": "P5",
+        "passed": true
+      },
+      {
+        "name": "P6",
+        "passed": true
+      },
+      {
+        "name": "P7",
+        "passed": true
+      }
+    ],
+    "property_fingerprint": "df6f372bed14f794202544285c47891d86a084673b80df1245db1b0abaa22437"
+  }
+}
