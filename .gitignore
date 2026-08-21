@@ -11,6 +11,7 @@ spec/states/
 .gocache/
 .gomodcache/
 .pycache/
+__pycache__/
 tmpbin/
 modelcheck/tools/
 

@@ -65,8 +65,6 @@ make check-spec-smoke
 - `results/`: selected normalized and reduced public result records.
 - `scripts/check_public_repo.py`: release hygiene scanner.
 
-## License Status
+## License
 
-No public reuse license is included in this sanitized export. Treat the private
-repository as source-available for review only unless a separate license is
-added by the repository owner.
+This sanitized public export is licensed under Apache-2.0. See `LICENSE`.

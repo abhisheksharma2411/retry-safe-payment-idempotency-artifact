@@ -1,5 +1,6 @@
 .github/workflows/public-artifact.yml
 .gitignore
+LICENSE
 Makefile
 PRIVATE_REPOSITORY_NOTICE.md
 PUBLIC_EXPORT_CHECKSUMS.sha256

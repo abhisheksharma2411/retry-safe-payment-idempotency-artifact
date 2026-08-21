@@ -21,6 +21,17 @@ def write_csv(path, rows, fieldnames):
         writer.writerows(rows)
 
 
+def categorize(source_file, mutant_id, schedule_id):
+    """Classify conformance rows so repeats, safe pairs, diagnostics, and mutants stay separate."""
+    if mutant_id:
+        return "mutant"
+    if source_file.startswith("determinism_"):
+        return "repeat"
+    if schedule_id.startswith("safe_pair_"):
+        return "safe_pair"
+    return "diagnostic"
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--runs-dir", required=True)
@@ -52,6 +63,7 @@ def main():
                 "implementation": run["implementation"],
                 "schedule_id": run["schedule_id"],
                 "mutant_id": mutant_id,
+                "category": categorize(run.get("source_file", ""), mutant_id, run["schedule_id"]),
                 "observer_passed": run["observer"]["passed"],
                 "property_fingerprint": run["observer"]["property_fingerprint"],
                 "trace_events": len(run["trace"]),
@@ -62,7 +74,7 @@ def main():
     write_csv(
         out_dir / "conformance_runs.csv",
         run_rows,
-        ["run_id", "mode", "implementation", "schedule_id", "mutant_id", "observer_passed", "property_fingerprint", "trace_events", "provider_events", "source_file"],
+        ["run_id", "mode", "implementation", "schedule_id", "mutant_id", "category", "observer_passed", "property_fingerprint", "trace_events", "provider_events", "source_file"],
     )
 
     model_rows = []
